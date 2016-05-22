@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore, applyMiddleware} from 'redux'
+import thunkMiddleware from 'redux-thunk';
+import {Provider} from 'react-redux'
+import App from './app';
+import reducers from './reducer/reducers'
 
-class WalkingSkeleton extends Component {
-  render() {
-    return (
-      <div>Hello, I'm a Walking Skeleton </div>
-    );
-  }
-}
+const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
+const store = createStoreWithMiddleware(reducers);
 
-ReactDOM.render(<WalkingSkeleton />, document.getElementById('app'));
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('app'));
