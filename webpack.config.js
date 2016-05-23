@@ -21,13 +21,13 @@ module.exports = {
             test: /\.js$/,
             loader: 'react-hot',
             include: path.join(__dirname, 'app')
-            },
-            {
+        }, {
             test: /\.js$/,
             loader: 'babel',
             query: {
                 presets: ['es2015', 'react']
             },
+            include: path.join(__dirname, 'app'),
             exclude: /node_modules/
         }, {
             test: /\.scss$/,
