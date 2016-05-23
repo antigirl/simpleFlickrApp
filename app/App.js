@@ -4,6 +4,9 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from './actions/actions';
 import BUTTON from './components/button';
 
+import './styles/reset.scss';
+import './styles/main.scss';
+
 export default class App extends Component {
     constructor(props) {
         super(props);
