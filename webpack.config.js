@@ -30,7 +30,7 @@ module.exports = {
             include: path.join(__dirname, 'app'),
             exclude: /node_modules/
         }, {
-            test: /\.scss$/,
+            test: /\.*css$/,
             loader: 'style!css!sass'
         }]
     }
