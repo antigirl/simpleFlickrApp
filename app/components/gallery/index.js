@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import GalleryImage from '../galleryImage';
 import './assets/gallery.scss';
 
 export default class Gallery extends Component {
@@ -11,14 +12,8 @@ export default class Gallery extends Component {
         return (
             <div className="row">
                 {photos.map((item, i) => {
-                    const thumbnailStyles = {
-                        backgroundImage: `url(${item.url})`,
-                        backgroundSize: 'cover'
-                    }
                     return <div className="col-lg-3 col-md-4 col-xs-6 thumbnail" key={i}>
-                        <a className="thumbnail__wrapper" href="#" style={thumbnailStyles}>
-                            <img className="img-responsive thumbnail__image" src={item.url} alt={item.title}/>
-                        </a>
+                        <GalleryImage url={item.url} src={item.src}/>
                     </div>
                 })}
             </div>
@@ -27,5 +22,5 @@ export default class Gallery extends Component {
 }
 
 Gallery.propTypes = {
-  photos: PropTypes.array
+    photos: PropTypes.array
 };
