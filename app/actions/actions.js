@@ -13,6 +13,13 @@ export function gotImages(photos) {
     }
 }
 
+export function showLargeImage(largeImage) {
+    return {
+        type: 'SHOW_LARGE_IMAGE',
+        largeImage
+    }
+}
+
 export function fetchImages() {
     return dispatch => {
         dispatch(loading());
