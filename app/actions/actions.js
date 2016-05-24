@@ -13,10 +13,12 @@ export function gotImages(photos) {
     }
 }
 
-export function showLargeImage(largeImage) {
+export function showLargeImage(largeImage, title, author) {
     return {
         type: 'SHOW_LARGE_IMAGE',
-        largeImage
+        largeImage,
+        title,
+        author
     }
 }
 

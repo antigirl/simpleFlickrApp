@@ -9,7 +9,32 @@
 }
 
 .thumb-large__img {
+    max-width: 100%;
+}
+
+.thumb-large__wrapper {
     margin-top: 50px;
-    max-width: 900px;
-    max-height: 700px;
+    background: #fff;
+    padding-left: 0!important; //because css-loader order of styles is not garunteed!
+    padding-right: 0!important;
+}
+
+.thumb-large__close {
+    font-size: 40px;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    right: 20px;
+
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 768px) {
+    .thumb-large__img {
+        max-height: 700px;
+    }
 }

@@ -2,6 +2,8 @@
     padding: 10px 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     border-radius: 0 0 3px 3px;
+    text-align: left;
+    background: #fff;
 }
 
 .thumbnail-info__author {
@@ -15,7 +17,7 @@
 .thumbnail-info__title {
     color: #64B5F6;
     display: inline-block;
-    width: 100px;
+    width: 90px;
     padding-top: 3px;
     height: 22px;
     overflow: hidden;
@@ -25,7 +27,11 @@
 
 
 @media (min-width: 768px) {
+    .thumbnail-info {
+        padding: 10px 10px;
+    }
+
     .thumbnail-info__title {
-        width: 220px;
+        width: 200px;
     }
 }

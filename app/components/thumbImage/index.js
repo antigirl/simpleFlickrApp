@@ -6,18 +6,18 @@ export default class ThumbImage extends Component {
         super(props);
     }
 
-    showLargeImage(imageURL) {
-        this.props.actions.showLargeImage(imageURL);
+    showLargeImage(imageURL, title, author) {
+        this.props.actions.showLargeImage(imageURL, title, author);
     }
 
     render() {
-        const {url, title} = this.props;
+        const {url, title, author} = this.props;
         const thumbnailStyles = {
             backgroundImage: `url(${url})`,
             backgroundSize: 'cover'
         };
         return (
-            <a className="thumbnail-image" onClick={this.showLargeImage.bind(this, url)} style={thumbnailStyles}>
+            <a className="thumbnail-image" onClick={this.showLargeImage.bind(this, url, title, author)} style={thumbnailStyles}>
                 <img className="img-responsive thumbnail-image__img" src={url} alt={title}/>
             </a>
         );
@@ -26,5 +26,6 @@ export default class ThumbImage extends Component {
 
 ThumbImage.propTypes = {
     url: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    author: PropTypes.string
 };

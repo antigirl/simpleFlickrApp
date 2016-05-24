@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import './assets/thumbInfo.scss';
+import ThumbFav from '../thumbFav';
 
 export default class ThumbInfo extends Component {
     constructor(props) {
@@ -7,11 +8,12 @@ export default class ThumbInfo extends Component {
     }
 
     render() {
-        const {author, title} = this.props;
+        const {author, title, actions} = this.props;
         return (
             <div className="thumbnail-info">
-                <span className="thumbnail-info__title">{title}</span>
+                <span className="thumbnail-info__title">{title? title: 'Untitled'}</span>
                 <img className="thumbnail-info__author" src={author}/>
+                {actions ? <ThumbFav actions={actions}/> : null }
             </div>
         );
     }

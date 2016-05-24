@@ -18,7 +18,8 @@ export default class App extends Component {
     }
 
     render() {
-        const { appState:{photos}, appState:{largeImage}, actions} = this.props;
+        const { appState:{photos}, appState:{largeImage, title, author}, actions} = this.props;
+        console.log(this.props);
         return (
             <div className="container">
                 <div className="row">
@@ -27,7 +28,7 @@ export default class App extends Component {
                     </div>
                 </div>
 
-                <Gallery actions={actions} largeImage={largeImage} photos={photos}/>
+                <Gallery actions={actions} largeImage={largeImage} title={title} author={author} photos={photos}/>
             </div>
         );
     }
