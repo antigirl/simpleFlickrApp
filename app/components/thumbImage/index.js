@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import './assets/galleryImage.scss';
+import './assets/thumbImage.scss';
 
-export default class GalleryImage extends Component {
+export default class ThumbImage extends Component {
     constructor(props) {
         super(props);
     }
@@ -11,16 +11,16 @@ export default class GalleryImage extends Component {
         const thumbnailStyles = {
             backgroundImage: `url(${url})`,
             backgroundSize: 'cover'
-        };        
+        };
         return (
-            <a className="thumbnail__wrapper" href="#" style={thumbnailStyles}>
-                <img className="img-responsive thumbnail__image" src={url} alt={title}/>
+            <a className="thumbnail-image" href="#" style={thumbnailStyles}>
+                <img className="img-responsive thumbnail-image__img" src={url} alt={title}/>
             </a>
         );
     }
 }
 
-GalleryImage.propTypes = {
+ThumbImage.propTypes = {
     url: PropTypes.string,
     title: PropTypes.string
 };

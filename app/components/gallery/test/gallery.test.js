@@ -2,7 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import Gallery from '../index.js'
-import GalleryImage from '../../galleryImage/index.js'
+import ThumbImage from '../../thumbImage/index.js'
+import ThumbInfo from '../../thumbInfo/index.js'
 
 describe('<Gallery />', () => {
     let wrapper;
@@ -23,10 +24,11 @@ describe('<Gallery />', () => {
 
     it('should have the required HTML elements', () => {
         expect(wrapper.find('.row')).to.have.length.of(1);
-        expect(wrapper.find('.thumbnail')).to.have.length.of(2);
+        expect(wrapper.find('.thumbnail-wrapper')).to.have.length.of(2);
     });
 
-    it('should render 2 GalleryImage components', () => {
-        expect(wrapper.find(GalleryImage)).to.have.length.of(2);
+    it('should render 2 ThumbImage & ThumbInfo components', () => {
+        expect(wrapper.find(ThumbImage)).to.have.length.of(2);
+        expect(wrapper.find(ThumbInfo)).to.have.length.of(2);
     });
 });

@@ -1,19 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import GalleryImage from '../index.js'
+import ThumbImage from '../index.js'
 
-describe('<Gallery Image/>', () => {
+describe('<ThumbImage/>', () => {
     let wrapper;
-    const thumbImage = '.thumbnail__image';
-    const thumbWrapper = '.thumbnail__wrapper';
+    const thumbImage = '.thumbnail-image__img';
+    const thumbWrapper = '.thumbnail-image';
 
     beforeEach(()=> {
         const props = {
                 title: 'something',
                 url: 'someURL'
             };
-        wrapper = shallow(<GalleryImage {...props}/>);
+        wrapper = shallow(<ThumbImage {...props}/>);
     });
 
     it('should have a the basic HTML structure', () => {
@@ -22,10 +22,9 @@ describe('<Gallery Image/>', () => {
     });
 
     it('should render appropriate URL and Title for the image', () => {
-        const thumbImage = '.thumbnail__image';
         expect(wrapper.find(thumbImage).props().alt).to.equal('something');
         expect(wrapper.find(thumbImage).props().src).to.equal('someURL');
-        expect(wrapper.contains(<img className="img-responsive thumbnail__image" src="someURL" alt="something"/>)).to.equal(true);
+        expect(wrapper.contains(<img className="img-responsive thumbnail-image__img" src="someURL" alt="something"/>)).to.equal(true);
     });
 
     it('should have appropriate background styles for the thumbnail', () => {
