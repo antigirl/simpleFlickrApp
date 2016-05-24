@@ -14,5 +14,5 @@ export default class ThumbFav extends Component {
 }
 
 ThumbFav.propTypes = {
-    actions: PropTypes.object
+    actions: PropTypes.object.isRequired
 };

@@ -1,8 +1,7 @@
 /* https://github.com/airbnb/enzyme/blob/master/docs/guides/jsdom.md **/
-require('babel-register')();
 require.extensions['.css'] = function () {return null;};
 require.extensions['.scss'] = function () {return null;};
-require.extensions['.png'] = function () {return null;};
+require.extensions['.svg'] = function () {return null;};
 require.extensions['.jpg'] = function () {return null;};
 
 var jsdom = require('jsdom').jsdom;

@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom';
 import ThumbInfo from '../thumbInfo';
 import './assets/thumbLarge.scss';
 
@@ -28,5 +27,7 @@ export default class ThumbLarge extends Component {
 
 ThumbLarge.propTypes = {
     actions: PropTypes.object,
-    largeImage: PropTypes.string
+    largeImage: PropTypes.string,
+    author: PropTypes.string,
+    title: PropTypes.string
 };

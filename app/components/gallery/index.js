@@ -11,7 +11,6 @@ export default class Gallery extends Component {
 
     render() {
         const {photos, actions, largeImage, title, author} = this.props;
-
         return (
             <div className="row">
                 {photos.map((item, i) => {
@@ -27,5 +26,9 @@ export default class Gallery extends Component {
 }
 
 Gallery.propTypes = {
-    photos: PropTypes.array
+    photos: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired,
+    largeImage: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string
 };

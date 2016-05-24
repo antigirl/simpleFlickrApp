@@ -20,6 +20,7 @@ export default class ThumbInfo extends Component {
 }
 
 ThumbInfo.propTypes = {
+    actions: PropTypes.object.isRequired,
     author: PropTypes.string,
     title: PropTypes.string
 };

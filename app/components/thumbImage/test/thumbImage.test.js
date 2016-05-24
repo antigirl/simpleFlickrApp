@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+import { expect, mount } from 'chai';
+import sinon from 'sinon';
 import ThumbImage from '../index.js'
 
 describe('<ThumbImage/>', () => {
@@ -8,7 +9,7 @@ describe('<ThumbImage/>', () => {
     const thumbImage = '.thumbnail-image__img';
     const thumbWrapper = '.thumbnail-image';
 
-    beforeEach(()=> {
+    beforeEach(() => {
         const props = {
                 title: 'something',
                 url: 'someURL'
@@ -30,4 +31,14 @@ describe('<ThumbImage/>', () => {
     it('should have appropriate background styles for the thumbnail', () => {
         expect(wrapper.find(thumbWrapper).props().style.backgroundImage).to.equal('url(someURL)');
     });
+
+    it('should fire showLargeImage action onClick', () => {
+        const actions = {
+            showLargeImage: sinon.spy()
+        };
+        const wrapper2 = shallow(<ThumbImage actions={actions} url="" title=""/>);
+        wrapper2.find(thumbWrapper).simulate('click');
+        expect(actions.showLargeImage.calledOnce).to.equal(true);
+    });
+
 });

@@ -9,7 +9,7 @@ describe('<ThumbInfo/>', () => {
     const thumbInfoTitle = '.thumbnail-info__title';
     const thumbInfoAuthor = '.thumbnail-info__author';
 
-    beforeEach(()=> {
+    beforeEach(() => {
         const props = {
                 title: 'something',
                 author: 'someAuthorURL'
@@ -27,5 +27,10 @@ describe('<ThumbInfo/>', () => {
         expect(wrapper.find(thumbInfoTitle).text()).to.equal('something');
         expect(wrapper.find(thumbInfoAuthor).props().src).to.equal('someAuthorURL');
         expect(wrapper.contains(<span className="thumbnail-info__title">something</span>)).to.equal(true);
+    });
+
+    it('should render default title if not available', () => {
+        const wrapper2 = shallow(<ThumbInfo title=''/>);
+        expect(wrapper2.find(thumbInfoTitle).text()).to.equal('Untitled');
     });
 });

@@ -4,11 +4,12 @@ import { expect } from 'chai';
 import Gallery from '../index.js'
 import ThumbImage from '../../thumbImage/index.js'
 import ThumbInfo from '../../thumbInfo/index.js'
+import ThumbLarge from '../../thumbLarge/index.js'
 
 describe('<Gallery />', () => {
     let wrapper;
 
-    beforeEach(()=> {
+    beforeEach(() => {
         const props = {
             photos: [{
                 title: 'something1',
@@ -19,7 +20,7 @@ describe('<Gallery />', () => {
                 url: 'someURL2'
             }]
         };
-        wrapper = shallow(<Gallery photos={props.photos}/>);
+        wrapper = shallow(<Gallery {...props}/>);
     });
 
     it('should have the required HTML elements', () => {
@@ -30,5 +31,11 @@ describe('<Gallery />', () => {
     it('should render 2 ThumbImage & ThumbInfo components', () => {
         expect(wrapper.find(ThumbImage)).to.have.length.of(2);
         expect(wrapper.find(ThumbInfo)).to.have.length.of(2);
+    });
+
+    it('should render ThumbLarge component', () => {
+        expect(wrapper.find(ThumbLarge)).to.have.length.of(0);
+        const wrapper2 = shallow(<Gallery photos={[]} largeImage="someLargeImageUrl"/>);
+        expect(wrapper2.find(ThumbLarge)).to.have.length.of(1);
     });
 });

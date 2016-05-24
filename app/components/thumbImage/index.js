@@ -25,7 +25,7 @@ export default class ThumbImage extends Component {
 }
 
 ThumbImage.propTypes = {
-    url: PropTypes.string,
+    url: PropTypes.string.isRequired,
     title: PropTypes.string,
     author: PropTypes.string
 };
