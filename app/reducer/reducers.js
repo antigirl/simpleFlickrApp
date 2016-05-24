@@ -1,7 +1,15 @@
-function appStateReducer(state = 0, action) {
+function appStateReducer(state = {loading: false, photos:[]}, action) {
     switch (action.type) {
-        case 'INCREMENT':
-        return state + 1;
+        case 'LOADING':
+        return Object.assign({}, state, {
+            loading: true
+        });
+
+        case 'GOT_IMAGES':
+        return Object.assign({}, state, {
+            loading: false,
+            photos: action.photos
+        });
 
         default:
         return state;
