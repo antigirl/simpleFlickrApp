@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
 import * as actionCreators from './actions/actions';
 import Gallery from './components/gallery';
+import Loader from './components/loader';
 
 import './styles/bootstrap.css';
 import './styles/bootstrap-theme.css';
@@ -18,8 +19,7 @@ export default class App extends Component {
     }
 
     render() {
-        const { appState:{photos}, appState:{largeImage, title, author}, actions} = this.props;
-        console.log(this.props);
+        const {appState:{loading, photos, largeImage, title, author}, actions} = this.props;
         return (
             <div className="container">
                 <div className="row">
@@ -27,8 +27,9 @@ export default class App extends Component {
                         <h1>Flickr App</h1>
                     </div>
                 </div>
-
+                {loading ? <Loader /> :
                 <Gallery actions={actions} largeImage={largeImage} title={title} author={author} photos={photos}/>
+                }
             </div>
         );
     }
