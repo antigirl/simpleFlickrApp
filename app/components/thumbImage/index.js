@@ -10,6 +10,10 @@ export default class ThumbImage extends Component {
         this.props.actions.showLargeImage(id, imageURL, title, author);
     }
 
+    shouldComponentUpdate() {
+        return false;
+    }
+
     render() {
         const {id, url, title, author} = this.props;
         const thumbnailStyles = {

@@ -8,11 +8,15 @@ export default class ThumbInfo extends Component {
         super(props);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.actions ? true : false;
+    }
+
     render() {
         const {id, author, title, savedImages, actions} = this.props;
         let thumbInfoClass = classNames({
                     'thumbnail-info': true,
-                    'thumbnail-info--fav': savedImages.indexOf(id) > -1
+                    'thumbnail-info--fav': savedImages.includes(id)
         });
         return (
             <div className={thumbInfoClass}>
