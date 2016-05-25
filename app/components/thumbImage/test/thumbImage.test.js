@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect, mount } from 'chai';
+import { expect } from 'chai';
 import sinon from 'sinon';
 import ThumbImage from '../index.js'
 
@@ -40,5 +40,4 @@ describe('<ThumbImage/>', () => {
         wrapper2.find(thumbWrapper).simulate('click');
         expect(actions.showLargeImage.calledOnce).to.equal(true);
     });
-
 });

@@ -1,4 +1,5 @@
 import * as flickrAPI from '../utils/flickrAPI.js';
+import * as storageAPI from '../utils/storageAPI.js';
 
 export function loading() {
     return {
@@ -13,9 +14,10 @@ export function gotImages(photos) {
     }
 }
 
-export function showLargeImage(largeImage, title, author) {
+export function showLargeImage(id, largeImage, title, author) {
     return {
         type: 'SHOW_LARGE_IMAGE',
+        id,
         largeImage,
         title,
         author
@@ -27,10 +29,30 @@ export function fetchImages() {
         dispatch(loading());
         flickrAPI.fetchImages()
         .then((result) => {
-            console.log('got result');
             dispatch(gotImages(result))
         }).catch((err)=> {
             console.log('handle error ', err);
         })
+    }
+}
+
+export function favImage(id) {
+    return dispatch => {
+        storageAPI.saveToStorage(id);
+        dispatch(saveFavImage());
+        dispatch(getFavImages());
+    }
+}
+
+export function saveFavImage() {
+    return {
+        type: 'SAVE_IMAGE'
+    }
+}
+
+export function getFavImages() {
+    return {
+        type: 'GET_IMAGES',
+        savedImages: storageAPI.getStorageData()
     }
 }

@@ -16,10 +16,11 @@ export default class App extends Component {
 
     componentDidMount() {
         this.props.actions.fetchImages();
+        this.props.actions.getFavImages();
     }
 
     render() {
-        const {appState:{loading, photos, largeImage, title, author}, actions} = this.props;
+        const {storageState:{savedImages}, appState:{loading, photos, id, largeImage, title, author}, actions} = this.props;
         return (
             <div className="container">
                 <div className="row">
@@ -28,7 +29,7 @@ export default class App extends Component {
                     </div>
                 </div>
                 {loading ? <Loader /> :
-                <Gallery actions={actions} largeImage={largeImage} title={title} author={author} photos={photos}/>
+                    <Gallery actions={actions} id={id} savedImages={savedImages} largeImage={largeImage} title={title} author={author} photos={photos}/>
                 }
             </div>
         );
@@ -36,7 +37,10 @@ export default class App extends Component {
 }
 
 function mapStateToProps(state) {
-    return {appState: state.appState};
+    return {
+        appState: state.app,
+        storageState: state.storage
+    };
 }
 
 function mapDispatchToProps(dispatch) {

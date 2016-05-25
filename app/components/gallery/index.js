@@ -10,16 +10,16 @@ export default class Gallery extends Component {
     }
 
     render() {
-        const {photos, actions, largeImage, title, author} = this.props;
+        const {savedImages, photos, actions, id, largeImage, title, author} = this.props;
         return (
             <div className="row">
                 {photos.map((item, i) => {
                     return <div className="col-lg-3 col-md-4 col-xs-6 thumbnail-wrapper" key={i}>
-                        <ThumbImage actions={actions} url={item.url} src={item.src} title={item.title} author={item.authorIcon}/>
-                        <ThumbInfo title={item.title} author={item.authorIcon}/>
+                        <ThumbImage actions={actions} id={item.id} url={item.url} src={item.src} title={item.title} author={item.authorIcon}/>
+                        <ThumbInfo savedImages={savedImages} id={item.id} title={item.title} author={item.authorIcon}/>
                     </div>
                 })}
-                {largeImage? <ThumbLarge largeImage={largeImage} title={title} author={author} actions={actions}/>: null}
+                {largeImage? <ThumbLarge savedImages={savedImages} id={id} largeImage={largeImage} title={title} author={author} actions={actions}/>: null}
             </div>
         );
     }
@@ -28,7 +28,9 @@ export default class Gallery extends Component {
 Gallery.propTypes = {
     photos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired,
+    id: PropTypes.string,
     largeImage: PropTypes.string,
     title: PropTypes.string,
-    author: PropTypes.string
+    author: PropTypes.string,
+    savedImages: PropTypes.array
 };

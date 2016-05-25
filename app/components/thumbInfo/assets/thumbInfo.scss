@@ -6,6 +6,24 @@
     background: #fff;
 }
 
+.thumbnail-info--fav {
+    background: #EC407A;
+
+    .thumbnail-info__title {
+        color: #fff;
+    }
+}
+
+.thumb-large {
+    .thumbnail-info--fav {
+        background: #fff;
+
+        .thumbnail-info__title {
+            color: #64B5F6;
+        }
+    }
+}
+
 .thumbnail-info__author {
     width: 25px;
     height: 25px;

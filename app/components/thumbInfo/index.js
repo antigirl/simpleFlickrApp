@@ -8,19 +8,26 @@ export default class ThumbInfo extends Component {
     }
 
     render() {
-        const {author, title, actions} = this.props;
+        const {id, author, title, savedImages, actions} = this.props;
+        let thumbInfoClass = 'thumbnail-info';
+        if ((savedImages || []).indexOf(id) > -1) {
+            thumbInfoClass += ' thumbnail-info--fav';
+        }
         return (
-            <div className="thumbnail-info">
+            <div className={thumbInfoClass}>
                 <span className="thumbnail-info__title">{title? title: 'Untitled'}</span>
                 <img className="thumbnail-info__author" src={author}/>
-                {actions ? <ThumbFav actions={actions}/> : null }
+                {actions ? <ThumbFav id={id} savedImages={savedImages} actions={actions}/> : null }
             </div>
         );
     }
 }
 
 ThumbInfo.propTypes = {
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.object,
+    id: PropTypes.string,
+    url: PropTypes.string,
     author: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    savedImages: PropTypes.array
 };

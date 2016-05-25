@@ -12,14 +12,14 @@ export default class ThumbLarge extends Component {
     }
 
     render() {
-        const {actions, largeImage, title, author} = this.props;
+        const {actions, savedImages, id, largeImage, title, author} = this.props;
         const largeImageTranslated = largeImage.replace('_m.jpg', '_b.jpg');
         return (
             <div className="thumb-large">
                 <a className="thumb-large__close" onClick={this.closeModal.bind(this)}>x</a>
-                <div className="col-lg-8 col-lg-offset-2 col-lg-offset-2 col-md-8 col-md-offset-2 col-md-offset-2 thumb-large__wrapper">
+                <div className="thumb-large__wrapper">
                     <img className="thumb-large__img" src={largeImageTranslated} />
-                    <ThumbInfo title={title} actions={actions} author={author}/>
+                    <ThumbInfo savedImages={savedImages} id={id} actions={actions} url={largeImage} title={title} author={author}/>
                 </div>
             </div>);
     }
@@ -27,7 +27,9 @@ export default class ThumbLarge extends Component {
 
 ThumbLarge.propTypes = {
     actions: PropTypes.object,
+    id: PropTypes.string,
     largeImage: PropTypes.string,
     author: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    savedImages: PropTypes.array
 };

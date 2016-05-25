@@ -7,12 +7,25 @@ export default class ThumbFav extends Component {
         super(props);
     }
 
+    favouriteImage(id) {
+        this.props.actions.favImage(id);
+    }
+
     render() {
-        const {actions} = this.props;
-        return (<a className="thumbFav"><img src={fav} className="thumbFav__icon"/></a>);
+        const {id, savedImages} = this.props;
+        let thumbFavClass = 'thumbFav__icon';
+        if ((savedImages || []).indexOf(id) > -1) {
+            thumbFavClass += ' fav';
+        }
+        return (
+            <a className="thumbFav" onClick={this.favouriteImage.bind(this, id)}>
+                <img src={fav} className={thumbFavClass}/>
+            </a>);
     }
 }
 
 ThumbFav.propTypes = {
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    id: PropTypes.string,
+    savedImages: PropTypes.array
 };

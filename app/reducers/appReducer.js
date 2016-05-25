@@ -1,4 +1,4 @@
-function appStateReducer(state = {loading: false, largeImage:null, title: null, author:null, photos:[]}, action) {
+export default function appReducer(state = {loading:false, id: null, largeImage:null, title: null, author:null, photos:[]}, action) {
     switch (action.type) {
         case 'LOADING':
         return Object.assign({}, state, {
@@ -13,7 +13,7 @@ function appStateReducer(state = {loading: false, largeImage:null, title: null, 
 
         case 'SHOW_LARGE_IMAGE':
         return Object.assign({}, state, {
-            loading: false,
+            id: action.id,
             largeImage: action.largeImage,
             title: action.title,
             author: action.author
@@ -21,11 +21,5 @@ function appStateReducer(state = {loading: false, largeImage:null, title: null, 
 
         default:
         return state;
-    }
-}
-
-export default function appState(state={}, action) {
-    return {
-        appState: appStateReducer(state.appState, action)
     }
 }

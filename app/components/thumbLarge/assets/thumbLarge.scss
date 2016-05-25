@@ -6,6 +6,7 @@
     width: 100%;
     height: 100%;
     text-align: center;
+    overflow: scroll;
 }
 
 .thumb-large__img {
@@ -15,8 +16,8 @@
 .thumb-large__wrapper {
     margin-top: 50px;
     background: #fff;
-    padding-left: 0!important; //because css-loader order of styles is not garunteed!
-    padding-right: 0!important;
+    display: inline-block;
+    width: auto;
 }
 
 .thumb-large__close {
@@ -36,5 +37,9 @@
 @media (min-width: 768px) {
     .thumb-large__img {
         max-height: 700px;
+    }
+
+    .thumb-large__wrapper {
+        margin-top: 20px;
     }
 }
