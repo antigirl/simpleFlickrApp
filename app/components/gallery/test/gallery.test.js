@@ -11,6 +11,7 @@ describe('<Gallery />', () => {
 
     beforeEach(() => {
         const props = {
+            actions: {},
             photos: [{
                 title: 'something1',
                 url: 'someURL1'
@@ -35,7 +36,7 @@ describe('<Gallery />', () => {
 
     it('should render ThumbLarge component', () => {
         expect(wrapper.find(ThumbLarge)).to.have.length.of(0);
-        const wrapper2 = shallow(<Gallery photos={[]} largeImage="someLargeImageUrl"/>);
+        const wrapper2 = shallow(<Gallery photos={[]} largeImage="someLargeImageUrl" actions={{}} />);
         expect(wrapper2.find(ThumbLarge)).to.have.length.of(1);
     });
 });

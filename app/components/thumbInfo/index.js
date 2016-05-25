@@ -16,7 +16,7 @@ export default class ThumbInfo extends Component {
         const {id, author, title, savedImages, actions} = this.props;
         let thumbInfoClass = classNames({
                     'thumbnail-info': true,
-                    'thumbnail-info--fav': savedImages.includes(id)
+                    'thumbnail-info--fav': savedImages.indexOf(id) > -1
         });
         return (
             <div className={thumbInfoClass}>

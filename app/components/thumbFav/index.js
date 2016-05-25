@@ -17,7 +17,7 @@ export default class ThumbFav extends Component {
         const {id, savedImages} = this.props;
         let thumbFavClass = classNames({
             'thumbFav__icon': true,
-            'thumbFav__icon--fav': savedImages.includes(id)
+            'thumbFav__icon--fav': savedImages.indexOf(id) > -1
         });
         return (
             <a className="thumbFav" onClick={this.favouriteImage.bind(this, id)}>

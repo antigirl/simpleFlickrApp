@@ -11,7 +11,8 @@ describe('<ThumbFav/>', () => {
 
     beforeEach(() => {
         const props = {
-            actions: {}
+            actions: {},
+            savedImages: []
         };
         wrapper = shallow(<ThumbFav {...props}/>);
     });
@@ -21,11 +22,22 @@ describe('<ThumbFav/>', () => {
         expect(wrapper.find(thumbFavIcon)).to.have.length(1);
     });
 
+    it('should have fav class if image is a favourite', () => {
+        expect(wrapper.find(thumbFavIcon).props().className).to.equal('thumbFav__icon');
+        const props = {
+            actions: {},
+            id: '0',
+            savedImages: ['0', '1']
+        };
+        const wrapper2 = shallow(<ThumbFav {...props}/>);
+        expect(wrapper2.find(thumbFavIcon).props().className).to.equal('thumbFav__icon thumbFav__icon--fav');
+    });
+
     it('should fire favImage action onClick', () => {
         const actions = {
             favImage: sinon.spy()
         };
-        const wrapper2 = shallow(<ThumbFav actions={actions}/>);
+        const wrapper2 = shallow(<ThumbFav actions={actions} savedImages={[]}/>);
         wrapper2.find(thumbFav).simulate('click');
         expect(actions.favImage.calledOnce).to.equal(true);
     });
