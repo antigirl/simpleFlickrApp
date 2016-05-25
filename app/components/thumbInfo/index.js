@@ -9,7 +9,12 @@ export default class ThumbInfo extends Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return nextProps.actions ? true : false;
+        const currentSaved = this.props.savedImages.slice(0);
+        currentSaved.splice(currentSaved.indexOf(this.props.id), 1);
+
+        return nextProps.actions ? true : false
+            || nextProps.savedImages.indexOf(this.props.id) > -1
+            || currentSaved.join() === nextProps.savedImages.join();
     }
 
     render() {
