@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
+import classNames from 'classnames';
 import './assets/thumbFav.scss';
 var fav = require('./assets/fav.svg');
+
 
 export default class ThumbFav extends Component {
     constructor(props) {
@@ -13,10 +15,10 @@ export default class ThumbFav extends Component {
 
     render() {
         const {id, savedImages} = this.props;
-        let thumbFavClass = 'thumbFav__icon';
-        if ((savedImages || []).indexOf(id) > -1) {
-            thumbFavClass += ' fav';
-        }
+        let thumbFavClass = classNames({
+            'thumbFav__icon': true,
+            'thumbFav__icon--fav': savedImages.indexOf(id) > -1
+        });
         return (
             <a className="thumbFav" onClick={this.favouriteImage.bind(this, id)}>
                 <img src={fav} className={thumbFavClass}/>

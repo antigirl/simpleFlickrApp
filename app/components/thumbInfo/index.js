@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import classNames from 'classnames';
 import './assets/thumbInfo.scss';
 import ThumbFav from '../thumbFav';
 
@@ -9,10 +10,10 @@ export default class ThumbInfo extends Component {
 
     render() {
         const {id, author, title, savedImages, actions} = this.props;
-        let thumbInfoClass = 'thumbnail-info';
-        if ((savedImages || []).indexOf(id) > -1) {
-            thumbInfoClass += ' thumbnail-info--fav';
-        }
+        let thumbInfoClass = classNames({
+                    'thumbnail-info': true,
+                    'thumbnail-info--fav': savedImages.indexOf(id) > -1
+        });
         return (
             <div className={thumbInfoClass}>
                 <span className="thumbnail-info__title">{title? title: 'Untitled'}</span>

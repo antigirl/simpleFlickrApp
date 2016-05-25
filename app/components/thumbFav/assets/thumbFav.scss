@@ -3,11 +3,11 @@
     height: 25px;
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
+}
 
-    &.fav {
-        -webkit-filter: none;
-        filter: none;
-    }
+.thumbFav__icon--fav {
+    -webkit-filter: none;
+    filter: none;
 }
 
 .thumbFav {

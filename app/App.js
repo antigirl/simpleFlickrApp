@@ -20,7 +20,8 @@ export default class App extends Component {
     }
 
     render() {
-        const {storageState:{savedImages}, appState:{loading, photos, id, largeImage, title, author}, actions} = this.props;
+        const {appState:{loading, photos, id, largeImage, title, author}, actions} = this.props;
+        const savedImages = this.props.storageState.savedImages || [];
         return (
             <div className="container">
                 <div className="row">
