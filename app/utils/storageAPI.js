@@ -3,7 +3,11 @@ import { config } from './config';
 export function saveToStorage(id) {
     const dataInStorage = getStorageData();
     const storageArray = dataInStorage ? dataInStorage : [];
-    storageArray.push(id)
+    if (storageArray.includes(id)) {
+        storageArray.splice(storageArray.indexOf(id), 1);
+    } else {
+        storageArray.push(id)
+    }
     localStorage.setItem(config.storageKey, JSON.stringify(storageArray));
 }
 
