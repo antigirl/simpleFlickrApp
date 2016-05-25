@@ -5,7 +5,8 @@ module.exports = {
     context: path.join(__dirname, 'app'),
     devtool: 'source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:8000',
+        'babel-polyfill',
+        'webpack-dev-server/client?http://1localhost:8000',
         'webpack/hot/only-dev-server',
         './index'
     ],

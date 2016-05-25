@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import { config } from './config';
 
 export function fetchImages() {

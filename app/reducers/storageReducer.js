@@ -11,6 +11,6 @@ export default function storageReducer(state = {savedNotification: false, savedI
         });
 
         default:
-        return state;        
+        return state;
     }
 }
