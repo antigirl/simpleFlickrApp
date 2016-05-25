@@ -26,7 +26,7 @@ export default class App extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
-                        <h1>Flickr App</h1>
+                        <h1 className="heading"><span>Flickr</span> App</h1>
                     </div>
                 </div>
                 {loading ? <Loader /> :

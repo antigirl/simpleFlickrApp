@@ -1,14 +1,13 @@
 var path = require('path');
-var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     context: path.join(__dirname, 'app'),
     devtool: 'source-map',
     entry: [
         'babel-polyfill',
-        'webpack-dev-server/client?http://localhost:8000',
-        'webpack/hot/only-dev-server',
         './index'
     ],
     output: {
@@ -16,15 +15,17 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.css'),
+        new CleanWebpackPlugin(['dist'], {
+              root: __dirname
+        }),
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, 'index.html'),
+            to: path.join(__dirname, 'dist','index.html')
+        }])
     ],
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loader: 'react-hot',
-            include: path.join(__dirname, 'app')
-        }, {
+        loaders: [ {
             test: /\.js$/,
             loader: 'babel',
             query: {

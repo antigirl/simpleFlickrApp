@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node devServer.js",
-    "test": "mocha --compilers js:babel-core/register --require ./tests/setup.js \"app/**/*.test.js\""
+    "build": "webpack -p --config webpack.config.dist.js",
+    "deploy": "npm run build && cd dist && surge",
+    "tests": "mocha --compilers js:babel-core/register --require ./tests/setup.js \"app/**/*.test.js\""
   },
   "repository": {
     "type": "git",
@@ -26,11 +28,14 @@
     "babel-preset-react": "^6.5.0",
     "babel-register": "^6.9.0",
     "chai": "^3.5.0",
+    "clean-webpack-plugin": "^0.1.9",
+    "copy-webpack-plugin": "^3.0.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "eslint": "^2.10.2",
     "eslint-plugin-react": "^5.1.1",
-    "file-loader": "^0.5.7",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
     "jsdom": "^9.1.0",
     "mocha": "^2.5.1",
     "node-sass": "^3.7.0",
@@ -39,6 +44,7 @@
     "sass-loader": "^3.2.0",
     "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
+    "surge": "^0.18.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
