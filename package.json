@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node devServer.js",
-    "build": "webpack -p --config webpack.config.dist.js",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --config webpack.config.dist.js",
     "deploy": "npm run build && cd dist && surge",
     "tests": "mocha --compilers js:babel-core/register --require ./tests/setup.js \"app/**/*.test.js\""
   },
